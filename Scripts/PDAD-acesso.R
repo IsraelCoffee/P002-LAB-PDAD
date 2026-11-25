@@ -19,14 +19,14 @@ unzip("bases pdad/Base de moradores.zip", exdir = "bases pdad")
 moradores <- read_csv2("bases pdad/moradores.csv")
 domicilios <- read_csv2("bases pdad/domicilios.csv")
 
-# Juntando domicílios e moradores ----
+## Juntando domicílios e moradores ----
 pdad2024 <- moradores %>% 
   dplyr::left_join(domicilios %>% 
                      select(-c(A01uf,localidade,setor_distrito,infla_ipcadf)),
                    by="A01nficha")
 
 
-# Declaração do plano amostral ----
+## Declaração do plano amostral ----
 
 amostra_mor <- 
   survey::svydesign(id = ~A01nficha,
@@ -42,13 +42,8 @@ amostra_dom <-
                     strata = ~setor_distrito,
                     weights = ~peso_dom,
                     nest = TRUE,
-                    data = pdad2024)
+                    data = domicilios)
 
 amostra_dom <- srvyr::as_survey(amostra_dom)
 
 options(survey.lonely.psu = "adjust")
-
-
-
-
-
