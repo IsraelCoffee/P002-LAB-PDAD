@@ -236,4 +236,4 @@ Colunas como `B13_3_1_88888` têm "88888" **no nome**. É uma categoria de respo
 (passo 2) (passo 3)      (passo 4)               (passos 5 e 6)
 ```
 
-O resultado é uma base que o R entende como uma **pesquisa por amostra de verdade**, e não como uma planilha qualquer. É isso que faz uma conta feita com 69 mil pessoas poder falar do Distrito Federal inteiro.
+O resultado é uma base que o R entende como uma **pesquisa por amostra de verdade**, e não como uma planilha qualquer.
