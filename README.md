@@ -8,6 +8,8 @@ Acesso à PDAD 2024 por meios públicos, usando R.
 
 A **PDAD** (Pesquisa Distrital por Amostra de Domicílios) é uma pesquisa que o IPEDF faz para saber como vivem as pessoas no Distrito Federal: quanto ganham, onde moram, quanto estudaram, como é a casa delas.
 
+A edição de 2024 é a **PDAD Ampliada (PDAD-A)**, que cobre as regiões administrativas do DF e também a Periferia Metropolitana de Brasília.
+
 Só que não dá para perguntar para **todo mundo**. Então a pesquisa visita uma parte dos domicílios (a **amostra**) e, depois, usa matemática para dizer como é a população inteira.
 
 Este repositório tem um script em R que faz o trabalho chato de preparação:
@@ -17,6 +19,16 @@ Este repositório tem um script em R que faz o trabalho chato de preparação:
 3. ensina o R a "ler" a amostra do jeito certo, para que as contas representem o DF inteiro e não só as pessoas que responderam.
 
 No final, você fica com tudo pronto para analisar.
+
+---
+
+## De onde vêm os dados
+
+Os dados são do **IPEDF** e a fonte original é o portal **InfoDF**: <https://infodf.ipe.df.gov.br>
+
+As cópias que estão neste repositório servem para facilitar o uso, mas **sempre baixe as bases direto da fonte original**. Assim você garante que está com a versão mais atual, sem correções perdidas, e que o dicionário de variáveis e o questionário são os oficiais.
+
+Se as bases do IPEDF forem atualizadas, o script continua valendo, desde que os arquivos tenham os mesmos nomes de colunas. Vale conferir o dicionário.
 
 ---
 
@@ -196,7 +208,7 @@ Para filtrar um grupo, use `filter()` **no objeto da amostra** (como acima), nun
 ## Cuidados importantes
 
 **1. A base não tem só o DF.**
-Ela inclui também o entorno em Goiás. A coluna `A01uf` diz onde fica a casa: `53` é o Distrito Federal e `52` é Goiás. Para analisar só o DF, use `filter(A01uf == 53)`. Se esquecer, a conta soma mais de 4 milhões de moradores em vez dos cerca de 3 milhões do DF.
+Ela inclui também o entorno em Goiás (a Periferia Metropolitana de Brasília, que faz parte da PDAD-A). A coluna `A01uf` diz onde fica a casa: `53` é o Distrito Federal e `52` é Goiás. Para analisar só o DF, use `filter(A01uf == 53)`. Se esquecer, a conta soma mais de 4 milhões de moradores em vez dos cerca de 3 milhões do DF.
 
 **2. Números que não são números.**
 Em muitas colunas, valores como `99999` não são respostas de verdade, são códigos:
